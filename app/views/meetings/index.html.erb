@@ -1,0 +1,45 @@
+
+
+
+<div class="flex flex-wrap items-center justify-between">
+  <div class="w-full lg:w-1/2">
+    <h1 class="text-2xl">Meetings</h1>
+  </div>
+
+  <div class="w-full lg:w-1/2 lg:text-right">
+    <%= link_to new_meeting_path, class: 'btn btn-default' do %>
+    Add New Meeting
+    <% end %>
+  </div>
+</div>
+
+<table class="w-full max-w-full mb-1 bg-transparent border-collapse">
+  <thead>
+    <tr>
+      
+        <th>Name</th>
+      
+
+              <th>Start time</th>
+              <th>End time</th>
+              <th>User</th>
+            
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meetings.each do |meeting| %>
+    <%= content_tag :tr, id: dom_id(meeting), class: dom_class(meeting) do %>
+    
+      <td><%= link_to meeting.name, meeting %></td>
+    
+
+          <td><%= meeting.start_time %></td>
+          <td><%= meeting.end_time %></td>
+          <td><%= meeting.user %></td>
+    
+    
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
