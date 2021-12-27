@@ -1,0 +1,17 @@
+<%
+=begin%>
+ 
+<%= link_to "#all-meetings", class: "tab flex items-center" do %>
+<% end %>
+<% meetings.each do |meeting| %>
+    <%= link_to meeting.name, meeting, class: "link mr-4" %>
+    <%= readable_time(meeting.start_time) %>  
+    <%= readable_time(meeting.end_time) %>
+    <%= link_to"Cancel Meeitng", meeting, method: :delete, data: {confirm: "are you sure? There are no refunds."}, class: "btn btn-destroy ml-4" if admin? %>
+<%= end %> 
+
+<h2> meeting claendar </h2>
+
+<%= render "calendar", meetings: meeting %> 
+<%
+=end%>
